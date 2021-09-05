@@ -10,7 +10,7 @@ public class RotateAroundPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        pivotObject = GameObject.Find("Platform");
     }
 
     // Update is called once per frame
