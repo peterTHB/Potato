@@ -30,11 +30,8 @@ public class SpawnTargets : MonoBehaviour
 
     private void SpawnAllTargets()
     {
-        float[] acceptedPositions = new float[]{ -16f, -15f, -14f, -13f, -12f, -11f, -10f,
-                                                  16f, 15f, 14f, 13f, 12f, 11f, 10f };
-
-        //float[] acceptedPositions = new float[]{ 15f, 14f, 13f, 12f, 11f, 10f };
-
+        float[] acceptedPositions = new float[]{ -21f, -20f, -19f, -18f, -17f,
+                                                  21f, 20f, 19f, 18f, 17f };
         for (int i = 0; i < maxTargets; i++)
         {
             float randomX = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
@@ -43,9 +40,6 @@ public class SpawnTargets : MonoBehaviour
 
             Vector3 position = new Vector3(randomX + platform.transform.position.x, randomY,
                 randomZ + platform.transform.position.z);
-
-            //Vector3 position = Random.onUnitSphere * acceptedPositions[Random.Range(0, acceptedPositions.Length)];
-            //position.y = position.y + 5f;
 
             Instantiate(target, position, Quaternion.identity);
         }

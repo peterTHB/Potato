@@ -33,8 +33,6 @@ public class EnemyMaker : MonoBehaviour
         float[] acceptedPositions = new float[]{ -16f, -15f, -14f, -13f, -12f, -11f, -10f,
                                                   16f, 15f, 14f, 13f, 12f, 11f, 10f };
 
-        //float[] acceptedPositions = new float[]{ 15f, 14f, 13f, 12f, 11f, 10f };
-
         for (int i = 0; i < maxEnemies; i++)
         {
             float randomX = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
@@ -43,9 +41,6 @@ public class EnemyMaker : MonoBehaviour
 
             Vector3 position = new Vector3(randomX + platform.transform.position.x, randomY,
                 randomZ + platform.transform.position.z);
-
-            //Vector3 position = Random.onUnitSphere * acceptedPositions[Random.Range(0, acceptedPositions.Length)];
-            //position.y = position.y + 5f;
 
             Instantiate(enemy, position, Quaternion.identity);
         }
