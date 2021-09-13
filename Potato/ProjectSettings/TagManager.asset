@@ -8,6 +8,8 @@ TagManager:
   - Boundary
   - Target
   - Enemy
+  - HealthSpawn
+  - Heart
   layers:
   - Default
   - TransparentFX

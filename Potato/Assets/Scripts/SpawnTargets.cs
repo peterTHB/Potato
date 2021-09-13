@@ -7,13 +7,13 @@ public class SpawnTargets : MonoBehaviour
     public int maxTargets;
     private int currTargets = 0;
     public GameObject target;
-    public GameObject platform;
+    public GameObject rotateAround;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerPrefs.SetInt("CurrentTargets", 0);
-        platform = GameObject.Find("Platform");
+        rotateAround = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -26,6 +26,8 @@ public class SpawnTargets : MonoBehaviour
             SpawnAllTargets();
             PlayerPrefs.SetInt("CurrentTargets", maxTargets);
         }
+
+        rotateAround = GameObject.Find("Player");
     }
 
     private void SpawnAllTargets()
@@ -38,8 +40,8 @@ public class SpawnTargets : MonoBehaviour
             float randomY = Random.Range(0, 5f);
             float randomZ = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
 
-            Vector3 position = new Vector3(randomX + platform.transform.position.x, randomY,
-                randomZ + platform.transform.position.z);
+            Vector3 position = new Vector3(randomX + rotateAround.transform.position.x, randomY,
+                randomZ + rotateAround.transform.position.z);
 
             Instantiate(target, position, Quaternion.identity);
         }

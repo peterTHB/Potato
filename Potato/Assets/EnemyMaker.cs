@@ -7,13 +7,13 @@ public class EnemyMaker : MonoBehaviour
     public int maxEnemies;
     private int currEnemies = 0;
     public GameObject enemy;
-    public GameObject platform;
+    public GameObject rotateAround;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerPrefs.SetInt("CurrentEnemies", 0);
-        platform = GameObject.Find("Platform");
+        rotateAround = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -26,6 +26,8 @@ public class EnemyMaker : MonoBehaviour
             SpawnAllEnemies();
             PlayerPrefs.SetInt("CurrentEnemies", maxEnemies);
         }
+
+        rotateAround = GameObject.Find("Player");
     }
 
     private void SpawnAllEnemies()
@@ -39,8 +41,8 @@ public class EnemyMaker : MonoBehaviour
             float randomY = Random.Range(0, 5f);
             float randomZ = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
 
-            Vector3 position = new Vector3(randomX + platform.transform.position.x, randomY,
-                randomZ + platform.transform.position.z);
+            Vector3 position = new Vector3(randomX + rotateAround.transform.position.x, randomY,
+                randomZ + rotateAround.transform.position.z);
 
             Instantiate(enemy, position, Quaternion.identity);
         }
