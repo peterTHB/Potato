@@ -14,18 +14,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3447038591770236762, guid: 77d4766d07a3ea3499c8fb0208f0d184, type: 3}
---- !u!114 &5595521897903182842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5243283054985154387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f68ead47080adc419dc144a77031af2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8876662775987040833
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,8 +23,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8191758341412515546}
-  - component: {fileID: 5362103859065778601}
-  - component: {fileID: 1563694189925138625}
+  - component: {fileID: -4556655723746458603}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -59,7 +46,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5362103859065778601
+--- !u!114 &-4556655723746458603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,24 +55,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8876662775987040833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fe8eb3d9f2692e44bb3ccd38fde2850, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f7fa5dd35c90904ea5045eafaaa9d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 15
---- !u!114 &1563694189925138625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876662775987040833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a0a8fa50829c840bff6d614c46e5ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 20
-  pivotObject: {fileID: 0}
+  rotateAroundSpeed: 30
+  yAxisRange: 20
+  model: {fileID: 5243283054985154387}
+  changeDirectionDelay: 2
 --- !u!1001 &4900633247861060098
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotateAroundPoint : MonoBehaviour
 {
     public float rotationSpeed;
-    public GameObject pivotObject;
+    private GameObject pivotObject;
 
     // Start is called before the first frame update
     void Start()
