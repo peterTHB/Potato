@@ -32,4 +32,9 @@ public class TargetScript : MonoBehaviour
             }
         }
     }
+
+    private void GotHit()
+    {
+
+    }
 }

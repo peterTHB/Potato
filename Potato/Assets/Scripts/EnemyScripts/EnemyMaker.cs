@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMaker : MonoBehaviour
 {
-    public int maxEnemies;
+    private int maxEnemies = 0;
     private int currEnemies = 0;
     public GameObject enemy;
     private GameObject rotateAround;
@@ -13,6 +13,7 @@ public class EnemyMaker : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("CurrentEnemies", 0);
+        maxEnemies = PlayerPrefs.GetInt("MaxEnemies");
         rotateAround = GameObject.Find("Player");
     }
 
@@ -23,6 +24,7 @@ public class EnemyMaker : MonoBehaviour
 
         if (currEnemies == 0)
         {
+            maxEnemies = PlayerPrefs.GetInt("MaxEnemies");
             SpawnAllEnemies();
             PlayerPrefs.SetInt("CurrentEnemies", maxEnemies);
         }

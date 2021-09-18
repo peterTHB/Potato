@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class RotateAroundPoint : MonoBehaviour
 {
-    public float rotationSpeed;
+    private float rotationSpeed;
     private GameObject pivotObject;
 
     // Start is called before the first frame update
     void Start()
     {
         pivotObject = GameObject.Find("Player");
+        rotationSpeed = Random.Range(20f, 25f);
     }
 
     // Update is called once per frame

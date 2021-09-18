@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - HealthSpawn
   - Heart
+  - PauseMenu
+  - TargetParent
+  - EnemyParent
   layers:
   - Default
   - TransparentFX

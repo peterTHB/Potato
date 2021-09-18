@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: -4556655723746458603}
   m_Layer: 0
   m_Name: BasicEnemy
-  m_TagString: Untagged
+  m_TagString: EnemyParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   rotateAroundSpeed: 30
   yAxisRange: 20
   model: {fileID: 5243283054985154387}
-  changeDirectionDelay: 2
+  baseActionChangeDelay: 3
 --- !u!1001 &4900633247861060098
 PrefabInstance:
   m_ObjectHideFlags: 0

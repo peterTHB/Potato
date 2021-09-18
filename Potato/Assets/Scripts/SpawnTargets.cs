@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnTargets : MonoBehaviour
 {
-    public int maxTargets;
+    private int maxTargets = 0;
     private int currTargets = 0;
     public GameObject target;
     public GameObject rotateAround;
@@ -14,6 +14,7 @@ public class SpawnTargets : MonoBehaviour
     {
         PlayerPrefs.SetInt("CurrentTargets", 0);
         rotateAround = GameObject.Find("Player");
+        maxTargets = PlayerPrefs.GetInt("MaxTargets");
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class SpawnTargets : MonoBehaviour
 
         if (currTargets == 0)
         {
+            maxTargets = PlayerPrefs.GetInt("MaxTargets");
             SpawnAllTargets();
             PlayerPrefs.SetInt("CurrentTargets", maxTargets);
         }
