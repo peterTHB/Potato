@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("Paused", 0);
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         pauseMenu.SetActive(false);
-        PlayerPrefs.SetInt("MaxEnemies", 3);
         PlayerPrefs.SetInt("MaxTargets", 3);
     }
 
@@ -110,19 +109,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") - 1;
-            GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] enemyParentObjects = GameObject.FindGameObjectsWithTag("EnemyParent");
-            GameObject.Destroy(enemyObjects[currEnemies]);
-            GameObject.Destroy(enemyParentObjects[currEnemies]);
-
-            if (currEnemies == 0)
+            if (PlayerPrefs.GetInt("CurrentEnemies") > 0)
             {
-                int currMaxEnemies = PlayerPrefs.GetInt("MaxEnemies");
-                PlayerPrefs.SetInt("MaxEnemies", currMaxEnemies + 3);
-            }
+                int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") - 1;
+                GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+                GameObject[] enemyParentObjects = GameObject.FindGameObjectsWithTag("EnemyParent");
+                GameObject.Destroy(enemyObjects[currEnemies]);
+                GameObject.Destroy(enemyParentObjects[currEnemies]);
 
-            PlayerPrefs.SetInt("CurrentEnemies", currEnemies);
+                PlayerPrefs.SetInt("CurrentEnemies", currEnemies);
+            }
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
