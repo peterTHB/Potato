@@ -12,12 +12,14 @@ public class EnemyMovement : MonoBehaviour
     private float rotationSpeed = 50;
 
     public GameObject model;
-
+    public GameObject bullet;
     private GameObject pivotObject;
 
     private ACTION currAction = ACTION.IDLE;
     private float lastChangeDirection;
     public float baseActionChangeDelay = 3f;
+    public float shotDelay = 4f;
+    private float lastTimeShot;
     private float adjustedActionDelay;
 
     // Start is called before the first frame update
@@ -81,6 +83,14 @@ public class EnemyMovement : MonoBehaviour
 
     private void ShootAtPlayer()
     {
-        //To be implemented
+        if (lastTimeShot + shotDelay <= Time.time)
+        {
+            GameObject newBullet = (GameObject)Instantiate(bullet);
+            newBullet.transform.position = transform.position;
+            newBullet.transform.LookAt(pivotObject.transform);
+
+            //reset timer
+            lastTimeShot = Time.time;
+        }
     }
 }

@@ -61,7 +61,8 @@ MonoBehaviour:
   rotateAroundSpeed: 30
   yAxisRange: 20
   model: {fileID: 5243283054985154387}
-  changeDirectionDelay: 2
+  bullet: {fileID: 377678470141908194, guid: 0dac88a39d047a24fbf708a0de9d1807, type: 3}
+  baseActionChangeDelay: 3
 --- !u!1001 &4900633247861060098
 PrefabInstance:
   m_ObjectHideFlags: 0
