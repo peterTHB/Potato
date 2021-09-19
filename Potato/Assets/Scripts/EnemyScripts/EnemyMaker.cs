@@ -52,7 +52,7 @@ public class EnemyMaker : MonoBehaviour
 
     private void SpawnAllEnemies()
     {
-        for (int i = 0; i < PlayerPrefs.GetInt("InitialEnemyCount"); i++)
+        for (int i = 0; i < PlayerPrefs.GetInt("MaxEnemyCount"); i++)
         {
             SpawnEnemy();
         }

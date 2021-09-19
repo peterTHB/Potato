@@ -8,10 +8,12 @@ public class SpawnTargets : MonoBehaviour
     //private int currTargets = 0;
     public GameObject target;
     public GameObject rotateAround;
+    private int maxTargets = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxTargets = PlayerPrefs.GetInt("MaxTargetCount");
         PlayerPrefs.SetInt("CurrentTargets", 0);
         rotateAround = GameObject.Find("Player");
     }
@@ -21,8 +23,9 @@ public class SpawnTargets : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("CurrentTargets") == 0)
         {
+            maxTargets += 1;
             SpawnAllTargets();
-            PlayerPrefs.SetInt("CurrentTargets", PlayerPrefs.GetInt("MaxTargets"));
+            PlayerPrefs.SetInt("CurrentTargets", maxTargets);
         }
 
         rotateAround = GameObject.Find("Player");
@@ -32,7 +35,7 @@ public class SpawnTargets : MonoBehaviour
     {
         float[] acceptedPositions = new float[]{ -21f, -20f, -19f, -18f, -17f,
                                                   21f, 20f, 19f, 18f, 17f };
-        for (int i = 0; i < PlayerPrefs.GetInt("MaxTargets"); i++)
+        for (int i = 0; i < maxTargets; i++)
         {
             float randomX = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
             float randomY = Random.Range(0, 5f);

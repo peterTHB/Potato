@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
-        //SceneManager.LoadScene("TestUIScene");
     }
 
     public void HowToPlay()
@@ -41,5 +40,23 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void EasyDifficulty()
+    {
+        PlayerPrefs.SetInt("MaxEnemyCount", 3);
+        PlayerPrefs.SetInt("MaxTargetCount", 2);
+    }
+
+    public void ModerateDifficulty()
+    {
+        PlayerPrefs.SetInt("MaxEnemyCount", 5);
+        PlayerPrefs.SetInt("MaxTargetCount", 3);
+    }
+
+    public void HardDifficulty()
+    {
+        PlayerPrefs.SetInt("MaxEnemyCount", 7);
+        PlayerPrefs.SetInt("MaxTargetCount", 4);
     }
 }

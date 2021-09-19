@@ -430,7 +430,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: How to play...
+  m_text: '- WASD to move
+
+    - Mouse to move camera
+
+    - ESC key to bring up/close
+    pause menu
+
+
+    Macro Keys
+
+    - N: Reduce enemy by 1 in scene
+
+    - M: Reduce
+    target by 1 in scene
+
+    - L: Increase amount of hearts by 1 in scene
+
+    -
+    K: Decrease amount of hearts by 1 in scene
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -464,8 +484,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
