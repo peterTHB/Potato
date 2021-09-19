@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,10 +19,16 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool canMove;
 
+    private GameObject pauseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        PlayerPrefs.SetInt("Paused", 0);
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        pauseMenu.SetActive(false);
+        PlayerPrefs.SetInt("MaxTargets", 3);
     }
 
     // Update is called once per frame
@@ -33,6 +40,16 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    velocity.y = -2f;
         //}
+
+        // Check if player has died or not
+        if (PlayerPrefs.GetInt("PlayerHealth") == 0)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("FinishedScene");
+        }
+
+        KeyControls();
 
         float xInput = Input.GetAxis("Mouse X");
 
@@ -57,6 +74,69 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    private void KeyControls()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PlayerPrefs.GetInt("Paused") == 1)
+            {
+                Time.timeScale = 1f;
+                pauseMenu.SetActive(false);
+                PlayerPrefs.SetInt("Paused", 0);
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else if (PlayerPrefs.GetInt("Paused") == 0)
+            {
+                Time.timeScale = 0f;
+                pauseMenu.SetActive(true);
+                PlayerPrefs.SetInt("Paused", 1);
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            int currHealth = PlayerPrefs.GetInt("PlayerHealth") + 1;
+            PlayerPrefs.SetInt("PlayerHealth", currHealth);
+            PlayerPrefs.SetString("MakeHearts", "YES");
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            int currHealth = PlayerPrefs.GetInt("PlayerHealth") - 1;
+            PlayerPrefs.SetInt("PlayerHealth", currHealth);
+            PlayerPrefs.SetString("MakeHearts", "YES");
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            if (PlayerPrefs.GetInt("CurrentEnemies") > 0)
+            {
+                int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") - 1;
+                GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+                GameObject[] enemyParentObjects = GameObject.FindGameObjectsWithTag("EnemyParent");
+                GameObject.Destroy(enemyObjects[currEnemies]);
+                GameObject.Destroy(enemyParentObjects[currEnemies]);
+
+                PlayerPrefs.SetInt("CurrentEnemies", currEnemies);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            int currTargets = PlayerPrefs.GetInt("CurrentTargets") - 1;
+            GameObject[] targetObjects = GameObject.FindGameObjectsWithTag("Target");
+            GameObject[] targetParentObjects = GameObject.FindGameObjectsWithTag("TargetParent");
+            GameObject.Destroy(targetObjects[currTargets]);
+            GameObject.Destroy(targetParentObjects[currTargets]);
+
+            if (currTargets == 0)
+            {
+                int currMaxTargets = PlayerPrefs.GetInt("MaxTargets");
+                PlayerPrefs.SetInt("MaxTargets", currMaxTargets + 3);
+            }
+
+            PlayerPrefs.SetInt("CurrentTargets", currTargets);
+        }
+    }
 
 }
 

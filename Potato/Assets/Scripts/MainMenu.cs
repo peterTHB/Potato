@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainScene");
+        //SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("TestUIScene");
     }
 
     public void HowToPlay()
@@ -26,6 +27,15 @@ public class MainMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void StopPause()
+    {
+        Time.timeScale = 1f;
+        GameObject pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        pauseMenu.SetActive(false);
+        PlayerPrefs.SetInt("Paused", 0);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitGame()

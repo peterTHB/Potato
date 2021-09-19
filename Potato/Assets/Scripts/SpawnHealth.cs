@@ -33,8 +33,6 @@ public class SpawnHealth : MonoBehaviour
         int currHealth = PlayerPrefs.GetInt("PlayerHealth");
         int healthDifference = maxHealth - currHealth;
 
-
-
         float positionX = 0f;
         float positionY = Heart.transform.position.y;
         float positionZ = Heart.transform.position.z;
@@ -52,7 +50,7 @@ public class SpawnHealth : MonoBehaviour
             Vector3 anchoredPos = new Vector3(positionX, 0f, 0f);
             newHeart.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
 
-            positionX += 100f;
+            positionX += 50f;
         }
 
         for (int j = 0; j < healthDifference; j++)
@@ -68,22 +66,13 @@ public class SpawnHealth : MonoBehaviour
             Vector3 anchoredPos = new Vector3(positionX, 0f, 0f);
             newHeart.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
 
-            positionX += 100f;
+            positionX += 50f;
         }
     }
 
     private void UpdateHearts()
     {
         GameObject[] allHearts = GameObject.FindGameObjectsWithTag("Heart");
-
-        if (allHearts.Length != 0)
-        {
-            Debug.Log("Got hearts");
-        }
-        else
-        {
-            Debug.Log("Got no hearts");
-        }
 
         foreach (GameObject heart in allHearts)
         {

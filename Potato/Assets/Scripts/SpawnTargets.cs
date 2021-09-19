@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnTargets : MonoBehaviour
 {
-    public int maxTargets;
-    private int currTargets = 0;
+    //private int maxTargets = 0;
+    //private int currTargets = 0;
     public GameObject target;
     public GameObject rotateAround;
 
@@ -19,12 +19,10 @@ public class SpawnTargets : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currTargets = PlayerPrefs.GetInt("CurrentTargets");
-
-        if (currTargets == 0)
+        if (PlayerPrefs.GetInt("CurrentTargets") == 0)
         {
             SpawnAllTargets();
-            PlayerPrefs.SetInt("CurrentTargets", maxTargets);
+            PlayerPrefs.SetInt("CurrentTargets", PlayerPrefs.GetInt("MaxTargets"));
         }
 
         rotateAround = GameObject.Find("Player");
@@ -34,7 +32,7 @@ public class SpawnTargets : MonoBehaviour
     {
         float[] acceptedPositions = new float[]{ -21f, -20f, -19f, -18f, -17f,
                                                   21f, 20f, 19f, 18f, 17f };
-        for (int i = 0; i < maxTargets; i++)
+        for (int i = 0; i < PlayerPrefs.GetInt("MaxTargets"); i++)
         {
             float randomX = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
             float randomY = Random.Range(0, 5f);
