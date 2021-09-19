@@ -9,6 +9,7 @@ public class UIValues : MonoBehaviour
     public TextMeshProUGUI currEnemies;
     public TextMeshProUGUI currTargets;
     public TextMeshProUGUI ammoCount;
+    public TextMeshProUGUI levelCount;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class UIValues : MonoBehaviour
         currEnemies.text = PlayerPrefs.GetInt("CurrentEnemies").ToString();
         currTargets.text = PlayerPrefs.GetInt("CurrentTargets").ToString();
         ammoCount.text = PlayerPrefs.GetInt("AmmoCount").ToString();
+        levelCount.text = PlayerPrefs.GetInt("LevelCount").ToString();
     }
 
     // Update is called once per frame
@@ -25,5 +27,6 @@ public class UIValues : MonoBehaviour
         currEnemies.text = PlayerPrefs.GetInt("CurrentEnemies").ToString();
         currTargets.text = PlayerPrefs.GetInt("CurrentTargets").ToString();
         ammoCount.text = PlayerPrefs.GetInt("AmmoCount").ToString();
+        levelCount.text = PlayerPrefs.GetInt("LevelCount").ToString();
     }
 }

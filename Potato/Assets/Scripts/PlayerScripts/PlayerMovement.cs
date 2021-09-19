@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         pauseMenu.SetActive(false);
         PlayerPrefs.SetInt("MaxTargets", 3);
+        PlayerPrefs.SetInt("LevelCount", 0);
     }
 
     // Update is called once per frame

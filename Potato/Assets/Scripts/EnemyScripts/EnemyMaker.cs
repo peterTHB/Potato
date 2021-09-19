@@ -25,6 +25,28 @@ public class EnemyMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerPrefs.GetInt("CurrentTargets") == 0)
+        {
+            GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] allParentEnemies = GameObject.FindGameObjectsWithTag("EnemyParent");
+
+            for (int i = 0; i < allEnemies.Length; i++)
+            {
+                GameObject.Destroy(allEnemies[i]);
+                GameObject.Destroy(allParentEnemies[i]);
+            }
+
+            int newLevelAmount = PlayerPrefs.GetInt("LevelCount") + 1;
+
+            PlayerPrefs.SetInt("LevelCount", newLevelAmount);
+            PlayerPrefs.SetInt("CurrentEnemies", 0);
+
+            for (int j = 0; j < PlayerPrefs.GetInt("LevelCount"); j++)
+            {
+                SpawnAllEnemies();
+            }
+        }
+
         rotateAround = GameObject.Find("Player");
     }
 
