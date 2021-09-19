@@ -1990,7 +1990,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7662016268819118976, guid: 8447dcd5d7a302d43b21c1676d982713, type: 3}
       propertyPath: m_Name
-      value: Platform
+      value: PlatformCircle
       objectReference: {fileID: 0}
     - target: {fileID: 7662016268819118976, guid: 8447dcd5d7a302d43b21c1676d982713, type: 3}
       propertyPath: m_IsActive
