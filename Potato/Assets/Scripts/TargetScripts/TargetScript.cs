@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TargetScript : MonoBehaviour
 {
+    public bool isBlocked = false;
+
     private void Start()
     {
         CheckInRadius();

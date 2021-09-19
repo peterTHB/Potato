@@ -6,7 +6,7 @@ public class EnemyMaker : MonoBehaviour
 {
     //private int maxEnemies = 0;
     //private int currEnemies = 0;
-    public GameObject enemy;
+    public GameObject[] enemys;
     private GameObject rotateAround;
 
     float[] acceptedPositions = new float[]{ -16f, -15f, -14f, -13f, -12f, -11f, -10f,
@@ -67,7 +67,9 @@ public class EnemyMaker : MonoBehaviour
         Vector3 position = new Vector3(randomX + rotateAround.transform.position.x, randomY,
             randomZ + rotateAround.transform.position.z);
 
-        Instantiate(enemy, position, Quaternion.identity);
+        GameObject currEnemy = enemys[Random.Range(0, enemys.Length)];
+
+        Instantiate(currEnemy, position, Quaternion.identity);
         int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") + 1;
         PlayerPrefs.SetInt("CurrentEnemies", currEnemies);
     }

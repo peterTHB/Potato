@@ -288,6 +288,18 @@ PrefabInstance:
       propertyPath: maxEnemies
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5132995871816770074, guid: e89d31413f4d9da4bb6834381e2ed2f8, type: 3}
+      propertyPath: enemys.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5132995871816770074, guid: e89d31413f4d9da4bb6834381e2ed2f8, type: 3}
+      propertyPath: enemys.Array.data[0]
+      value: 
+      objectReference: {fileID: 8876662775987040833, guid: b339790e2ba9be44280a91183f169bb8, type: 3}
+    - target: {fileID: 5132995871816770074, guid: e89d31413f4d9da4bb6834381e2ed2f8, type: 3}
+      propertyPath: enemys.Array.data[1]
+      value: 
+      objectReference: {fileID: 8876662775987040833, guid: f7b4af57d276236459191e2b95bb74f0, type: 3}
     - target: {fileID: 5132995871816770075, guid: e89d31413f4d9da4bb6834381e2ed2f8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -356,6 +368,14 @@ PrefabInstance:
     - target: {fileID: 3264660258405922225, guid: df182bbaec06f0d4f9a5bd9379bd89c2, type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264660258405922227, guid: df182bbaec06f0d4f9a5bd9379bd89c2, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264660258405922227, guid: df182bbaec06f0d4f9a5bd9379bd89c2, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3264660258405922237, guid: df182bbaec06f0d4f9a5bd9379bd89c2, type: 3}
       propertyPath: m_Pivot.x
