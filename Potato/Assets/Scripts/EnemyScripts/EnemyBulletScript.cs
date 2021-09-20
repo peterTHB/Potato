@@ -67,6 +67,11 @@ public class EnemyBulletScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        else if (other.CompareTag("Arrow"))
+        {
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+        }
         //TODO arrow trigger
     }
 }

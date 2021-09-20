@@ -32,33 +32,40 @@ public class BasicEnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        model.transform.Rotate(new Vector3(0, 0, rotationSpeed) * Time.deltaTime);
-
-        if (lastChangeDirection + adjustedActionDelay <= Time.time)
+        if (model != null)
         {
-            //make sure new action is not same as old
-            ACTION newAction;
-            do
+            model.transform.Rotate(new Vector3(0, 0, rotationSpeed) * Time.deltaTime);
+
+            if (lastChangeDirection + adjustedActionDelay <= Time.time)
             {
-                newAction = (ACTION)Random.Range(0, System.Enum.GetNames(typeof(ACTION)).Length);
-            } while (newAction == currAction);
-            adjustedActionDelay = baseActionChangeDelay + Random.Range(-1, 1);
-            currAction = newAction;
-            lastChangeDirection = Time.time;
-        }
+                //make sure new action is not same as old
+                ACTION newAction;
+                do
+                {
+                    newAction = (ACTION)Random.Range(0, System.Enum.GetNames(typeof(ACTION)).Length);
+                } while (newAction == currAction);
+                adjustedActionDelay = baseActionChangeDelay + Random.Range(-1, 1);
+                currAction = newAction;
+                lastChangeDirection = Time.time;
+            }
 
-        if (transform.position.y >= yAxisRange)
-        {
-            currAction = ACTION.MOVEDOWN;
-            lastChangeDirection = Time.time;
-        }
-        else if (transform.position.y <= 0)
-        {
-            currAction = ACTION.MOVEUP;
-            lastChangeDirection = Time.time;
-        }
+            if (transform.position.y >= yAxisRange)
+            {
+                currAction = ACTION.MOVEDOWN;
+                lastChangeDirection = Time.time;
+            }
+            else if (transform.position.y <= 0)
+            {
+                currAction = ACTION.MOVEUP;
+                lastChangeDirection = Time.time;
+            }
 
-        HandleAction();
+            HandleAction();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void HandleAction()

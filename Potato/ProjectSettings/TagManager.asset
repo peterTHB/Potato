@@ -14,6 +14,8 @@ TagManager:
   - TargetParent
   - EnemyParent
   - Shield
+  - EnemyBullet
+  - Arrow
   layers:
   - Default
   - TransparentFX

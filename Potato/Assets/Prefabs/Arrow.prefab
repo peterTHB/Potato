@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3371c125f7b014f67b9cf561da8d24a7, type: 3}
+      propertyPath: m_TagString
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 4285437523999393547, guid: 3371c125f7b014f67b9cf561da8d24a7, type: 3}
       propertyPath: m_IsActive
       value: 0

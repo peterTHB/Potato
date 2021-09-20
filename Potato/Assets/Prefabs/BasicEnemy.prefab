@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 30106336178710295}
   m_Layer: 0
   m_Name: UFOPivotAdjust
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,6 +173,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9bbd24492c41601489d5f513986689c9, type: 3}
       propertyPath: m_Name
       value: UFO
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9bbd24492c41601489d5f513986689c9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bbd24492c41601489d5f513986689c9, type: 3}
