@@ -46,9 +46,14 @@ public class Arrow : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Target" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Target")
         {
-            Destroy(collision.gameObject, 0.1f);
+            collision.gameObject.GetComponent<TargetScript>().GotHit();
+            Destroy(gameObject, 0.1f);
+        }
+        else if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyScript>().GotHit();
             Destroy(gameObject, 0.1f);
         }
         else

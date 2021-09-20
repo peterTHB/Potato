@@ -127,11 +127,18 @@ public class ShielderEnemyMovement : MonoBehaviour
 
         foreach (GameObject target in targetList)
         {
-            if (!target.GetComponent<TargetScript>().isBlocked)
+            if (!target.GetComponent<TargetScript>().isBlocked && currTargetProtecting == null)
             {
                 currTargetProtecting = target;
-                target.GetComponent<TargetScript>().isBlocked = true;
+                currTargetProtecting.GetComponent<TargetScript>().isBlocked = true;
+                
             }
         }
+    }
+
+    public void StopShielding()
+    {
+        currTargetProtecting.GetComponent<TargetScript>().isBlocked = false;
+        currTargetProtecting = null;
     }
 }

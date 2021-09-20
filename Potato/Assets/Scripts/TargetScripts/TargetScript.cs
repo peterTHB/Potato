@@ -35,12 +35,14 @@ public class TargetScript : MonoBehaviour
         }
     }
 
-    private void GotHit()
+    public void GotHit()
     {
         // Set Current entities by -1
         // If current entities are 0,
         //      increase max entities
         //      Increase level difficulty and destroy all current enemies in scene
         // destroy gameobject and parent
+
+        Destroy(transform.parent.gameObject);
     }
 }
