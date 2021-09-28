@@ -24,7 +24,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Drill
-    second: {fileID: 2100000, guid: 2e16ad20c804f0e408f190cc102c31c0, type: 2}
+    second: {fileID: 2100000, guid: 48e54c4017358da40a408f00bf479a62, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -34,17 +34,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mouth
-    second: {fileID: 2100000, guid: f5351b19cde445c43bf6b32e47db1e98, type: 2}
+    second: {fileID: 2100000, guid: 22a74cc1dbb704944bf69d3e6aa70fb7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rocket
-    second: {fileID: 2100000, guid: 00ba30b9d4ca606408fb14b970344762, type: 2}
+    second: {fileID: 2100000, guid: 22a74cc1dbb704944bf69d3e6aa70fb7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SecondaryMetal
-    second: {fileID: 2100000, guid: f5351b19cde445c43bf6b32e47db1e98, type: 2}
+    second: {fileID: 2100000, guid: 144727391b08380429367343bbe5fab8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -96,7 +96,28 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.20512821
+        functionName: DrillStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8173077
+        functionName: DrillStop
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.15925926
+        functionName: AudioStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -125,7 +146,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: DrillStop
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

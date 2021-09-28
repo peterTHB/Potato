@@ -1,8 +1,14 @@
 fileFormatVersion: 2
-guid: 00ba30b9d4ca606408fb14b970344762
+guid: 22a74cc1dbb704944bf69d3e6aa70fb7
+labels:
+- Industrial
+- Metal
+- Pattern
+- SciFi
+- Steel
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
