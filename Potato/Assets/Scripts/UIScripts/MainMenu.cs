@@ -59,4 +59,10 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("MaxEnemyCount", 7);
         PlayerPrefs.SetInt("MaxTargetCount", 4);
     }
+
+    public void LoadARTest()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("ARSceneTest");
+    }
 }
