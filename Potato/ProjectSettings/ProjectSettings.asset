@@ -66,7 +66,7 @@ PlayerSettings:
   disableDepthAndStencilBuffers: 0
   androidStartInFullscreen: 1
   androidRenderOutsideSafeArea: 1
-  androidUseSwappy: 1
+  androidUseSwappy: 0
   androidBlitType: 0
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
@@ -132,6 +132,7 @@ PlayerSettings:
   - {fileID: 11400000, guid: 0cc05cb37be86fa46adf7412449b9858, type: 2}
   - {fileID: -5849558618576889349, guid: 9001e1699c4af66458643b560f782261, type: 2}
   - {fileID: -2033437255287619696, guid: d1b0bac21753d084293baafbb7267394, type: 2}
+  - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
