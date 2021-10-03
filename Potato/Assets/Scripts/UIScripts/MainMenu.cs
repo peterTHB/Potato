@@ -65,4 +65,9 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("ARSceneTest");
     }
+
+    public void CanShoot()
+    {
+        PlayerPrefs.SetString("Shooting", "Yes");
+    }
 }

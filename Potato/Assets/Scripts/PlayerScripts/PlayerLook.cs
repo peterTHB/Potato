@@ -18,11 +18,11 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotationX -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        //rotationX -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
-        rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
+        //rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
 
-        transform.localEulerAngles =
-            new Vector3(rotationX, transform.localEulerAngles.y, 0f);
+        //transform.localEulerAngles =
+        //    new Vector3(rotationX, transform.localEulerAngles.y, 0f);
     }
 }

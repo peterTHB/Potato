@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    private PlayerInput playerInput;
+
     Vector3 velocity;
     bool isGrounded;
     bool canMove;
@@ -24,12 +27,15 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         PlayerPrefs.SetInt("Paused", 0);
+        PlayerPrefs.SetFloat("PlayerScore", 0);
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         pauseMenu.SetActive(false);
         PlayerPrefs.SetInt("MaxTargets", 3);
         PlayerPrefs.SetInt("LevelCount", 0);
+        playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -52,18 +58,23 @@ public class PlayerMovement : MonoBehaviour
 
         KeyControls();
 
-        float xInput = Input.GetAxis("Mouse X");
+        //float xInput = Input.GetAxis("Mouse X");
 
-        xInput *= sensitivity * Time.deltaTime;
+        //xInput *= sensitivity * Time.deltaTime;
 
-        transform.Rotate(0f, xInput, 0f);
+        //transform.Rotate(0f, xInput, 0f);
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
+        Vector3 moving = new Vector3(input.x, 0, input.y);
+        //moving = moving.x * cameraTransform.right + moving.z * cameraTransform.forward;
+        //moving.y = 0f;
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        //float x = Input.GetAxis("Horizontal");
+        //float z = Input.GetAxis("Vertical");
 
-        controller.Move(move * speed * Time.deltaTime);
+        //Vector3 move = transform.right * x + transform.forward * z;
+
+        controller.Move(moving * speed * Time.deltaTime);
 
         //if (Input.GetButtonDown("Jump") && isGrounded)
         //{
@@ -72,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         //velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime);
+        //controller.Move(velocity * Time.deltaTime);
     }
 
     private void KeyControls()
@@ -84,14 +95,14 @@ public class PlayerMovement : MonoBehaviour
                 Time.timeScale = 1f;
                 pauseMenu.SetActive(false);
                 PlayerPrefs.SetInt("Paused", 0);
-                Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.lockState = CursorLockMode.Locked;
             }
             else if (PlayerPrefs.GetInt("Paused") == 0)
             {
                 Time.timeScale = 0f;
                 pauseMenu.SetActive(true);
                 PlayerPrefs.SetInt("Paused", 1);
-                Cursor.lockState = CursorLockMode.None;
+                //Cursor.lockState = CursorLockMode.None;
             }
         }
 

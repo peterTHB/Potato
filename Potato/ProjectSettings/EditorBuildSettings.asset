@@ -24,6 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/ARSceneTest.unity
     guid: 8abfefe33b42848428f946c44f9dc497
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 0cc05cb37be86fa46adf7412449b9858,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d1b0bac21753d084293baafbb7267394,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9001e1699c4af66458643b560f782261,

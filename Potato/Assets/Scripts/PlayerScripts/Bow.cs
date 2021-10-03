@@ -17,7 +17,7 @@ public class Bow : MonoBehaviour
     private Vector3 right_focus_pos = new Vector3(0.15f, 0.3f, 0.15f);
     private Vector3 left_focus_pos = new Vector3(0.3f, 0.3f, 0.15f);
     private Vector3 focus_rot = new Vector3(0f, -90f, 90f);
-    
+
     public GameObject arrow_obj;
 
 
@@ -29,7 +29,7 @@ public class Bow : MonoBehaviour
     void Update()
     {
         //Fire an arrow 
-        if (Input.GetMouseButtonDown(0) && allowed_to_shoot)
+        if (PlayerPrefs.GetString("Shooting").Equals("Yes") && allowed_to_shoot)
         {
             allowed_to_shoot = false;
             GameObject newArrow = Instantiate(arrow_obj, transform);
@@ -37,6 +37,8 @@ public class Bow : MonoBehaviour
 
             arrow_obj.SetActive(false);
             cooldown -= Time.deltaTime;
+
+            PlayerPrefs.SetString("Shooting", "No");
         }
 
         // Update current cooldown when waiting to reload 
@@ -53,6 +55,4 @@ public class Bow : MonoBehaviour
             cooldown = 2.0f;
         }
     }
-
-   
 }
