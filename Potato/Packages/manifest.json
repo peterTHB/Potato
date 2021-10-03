@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-10.2.5.tgz",
     "com.unity.collab-proxy": "1.7.1",
     "com.unity.device-simulator": "3.0.2-preview",
     "com.unity.ide.rider": "3.0.7",
@@ -10,9 +11,6 @@
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.1",
     "com.unity.ugui": "1.0.0",
-    "com.unity.xr.arcore": "4.0.12",
-    "com.unity.xr.arfoundation": "4.0.12",
-    "com.unity.xr.arkit-face-tracking": "4.0.12",
     "com.unity.xr.management": "4.1.0",
     "com.unity.xr.openxr": "1.0.3",
     "com.unity.modules.ai": "1.0.0",
