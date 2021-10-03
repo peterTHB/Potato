@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("MaxTargets", 3);
         PlayerPrefs.SetInt("LevelCount", 0);
         playerInput = GetComponent<PlayerInput>();
+        PlayerPrefs.SetInt("PlayerTargetsHit", 0);
         Input.gyro.enabled = true;
     }
 

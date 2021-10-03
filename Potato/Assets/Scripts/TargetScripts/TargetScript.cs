@@ -42,7 +42,8 @@ public class TargetScript : MonoBehaviour
         //      increase max entities
         //      Increase level difficulty and destroy all current enemies in scene
         // destroy gameobject and parent
-
+        int totalTargetsHit = PlayerPrefs.GetInt("PlayerTargetsHit") + 1;
+        PlayerPrefs.SetInt("PlayerTargetsHit", totalTargetsHit);
         Destroy(transform.parent.gameObject);
     }
 }
