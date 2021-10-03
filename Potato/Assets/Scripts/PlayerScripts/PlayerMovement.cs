@@ -32,15 +32,25 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("Paused", 0);
         PlayerPrefs.SetFloat("PlayerScore", 0);
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        pauseMenu.SetActive(false);
+        //pauseMenu.SetActive(false);
         PlayerPrefs.SetInt("MaxTargets", 3);
         PlayerPrefs.SetInt("LevelCount", 0);
         playerInput = GetComponent<PlayerInput>();
+        Input.gyro.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PlayerPrefs.GetInt("Paused") == 0)
+        {
+            pauseMenu.SetActive(false);
+        }
+        else if (PlayerPrefs.GetInt("Paused") == 1)
+        {
+            pauseMenu.SetActive(true);
+        }
+
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         //if (isGrounded && velocity.y < 0)
@@ -63,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
         //xInput *= sensitivity * Time.deltaTime;
 
         //transform.Rotate(0f, xInput, 0f);
+
+        //float xMovement = Input.acceleration.x;
+        float xMovement = -Input.gyro.rotationRateUnbiased.x;
+        float yMovement = -Input.gyro.rotationRateUnbiased.y;
+        //float zMovement = -Input.gyro.rotationRateUnbiased.z;
+        transform.Rotate(xMovement, yMovement, 0f);
 
         Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
         Vector3 moving = new Vector3(input.x, 0, input.y);

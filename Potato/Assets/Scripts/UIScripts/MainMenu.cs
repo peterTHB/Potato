@@ -31,10 +31,10 @@ public class MainMenu : MonoBehaviour
     public void StopPause()
     {
         Time.timeScale = 1f;
-        GameObject pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        pauseMenu.SetActive(false);
         PlayerPrefs.SetInt("Paused", 0);
-        Cursor.lockState = CursorLockMode.Locked;
+        //GameObject pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        //pauseMenu.SetActive(false);
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitGame()
@@ -69,5 +69,21 @@ public class MainMenu : MonoBehaviour
     public void CanShoot()
     {
         PlayerPrefs.SetString("Shooting", "Yes");
+    }
+
+    public void PlayerPausing()
+    {
+        if (PlayerPrefs.GetInt("Paused") == 1)
+        {
+            Time.timeScale = 1f;
+            PlayerPrefs.SetInt("Paused", 0);
+            //Cursor.lockState = CursorLockMode.Locked;
+        }
+        else if (PlayerPrefs.GetInt("Paused") == 0)
+        {
+            Time.timeScale = 0f;
+            PlayerPrefs.SetInt("Paused", 1);
+            //Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
