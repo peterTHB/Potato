@@ -44,18 +44,21 @@ public class MainMenu : MonoBehaviour
 
     public void EasyDifficulty()
     {
+        PlayerPrefs.SetString("DifficultyText", "Easy");
         PlayerPrefs.SetInt("MaxEnemyCount", 3);
         PlayerPrefs.SetInt("MaxTargetCount", 2);
     }
 
     public void ModerateDifficulty()
     {
+        PlayerPrefs.SetString("DifficultyText", "Moderate");
         PlayerPrefs.SetInt("MaxEnemyCount", 5);
         PlayerPrefs.SetInt("MaxTargetCount", 3);
     }
 
     public void HardDifficulty()
     {
+        PlayerPrefs.SetString("DifficultyText", "Hard");
         PlayerPrefs.SetInt("MaxEnemyCount", 7);
         PlayerPrefs.SetInt("MaxTargetCount", 4);
     }
@@ -85,5 +88,15 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("Paused", 1);
             //Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    public void SetNormalView()
+    {
+        PlayerPrefs.SetString("ViewingMode", "Normal");
+    }
+
+    public void SetARView()
+    {
+        PlayerPrefs.SetString("ViewingMode", "AR");
     }
 }

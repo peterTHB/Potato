@@ -1613,7 +1613,7 @@ PrefabInstance:
     - target: {fileID: 2039182328270033521, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2039182328547752860, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
@@ -1692,9 +1692,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
+      propertyPath: ARCamera
+      value: 
+      objectReference: {fileID: 1065592227}
+    - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
+      propertyPath: normalCamera
+      value: 
+      objectReference: {fileID: 1911885037}
     - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
       propertyPath: groundDistance

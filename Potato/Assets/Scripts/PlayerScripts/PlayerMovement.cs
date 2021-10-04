@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     private GameObject pauseMenu;
 
+    public GameObject normalCamera;
+    public GameObject ARCamera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,15 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         PlayerPrefs.SetInt("PlayerTargetsHit", 0);
         Input.gyro.enabled = true;
+
+        if (PlayerPrefs.GetString("ViewingMode").Equals("Normal"))
+        {
+            ARCamera.SetActive(false);
+        }
+        else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
+        {
+            normalCamera.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -86,12 +98,13 @@ public class PlayerMovement : MonoBehaviour
         //moving = moving.x * cameraTransform.right + moving.z * cameraTransform.forward;
         //moving.y = 0f;
 
-        //float x = Input.GetAxis("Horizontal");
-        //float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        //Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(moving * speed * Time.deltaTime);
+        controller.Move(move * speed * Time.deltaTime);
 
         //if (Input.GetButtonDown("Jump") && isGrounded)
         //{
