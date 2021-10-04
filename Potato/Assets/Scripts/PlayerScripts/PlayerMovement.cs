@@ -49,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
         else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
         {
             normalCamera.SetActive(false);
+        } 
+        else if (PlayerPrefs.GetString("ViewingMode").Equals(default))
+        {
+            ARCamera.SetActive(false);
+            PlayerPrefs.SetString("ViewingMode", "Normal");
         }
     }
 

@@ -7,6 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
+        if (PlayerPrefs.GetString("DifficultyText").Equals(default))
+        {
+            PlayerPrefs.SetString("DifficultyText", "Easy");
+            PlayerPrefs.SetInt("MaxEnemyCount", 3);
+            PlayerPrefs.SetInt("MaxTargetCount", 2);
+        }
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
     }
@@ -61,12 +67,6 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetString("DifficultyText", "Hard");
         PlayerPrefs.SetInt("MaxEnemyCount", 7);
         PlayerPrefs.SetInt("MaxTargetCount", 4);
-    }
-
-    public void LoadARTest()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("ARSceneTest");
     }
 
     public void CanShoot()
