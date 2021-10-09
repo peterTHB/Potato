@@ -254,7 +254,6 @@ GameObject:
   - component: {fileID: 1065592231}
   - component: {fileID: 1065592230}
   - component: {fileID: 1065592229}
-  - component: {fileID: 1065592233}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -354,18 +353,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1065592233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065592227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0daabd4a0d35e84195a707dd644bf1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1083138321
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 82, y: 77}
+  m_AnchoredPosition: {x: 115, y: 102}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083138323
@@ -1615,6 +1602,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2039182328270033533, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2039182328547752860, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
       propertyPath: m_Name
@@ -1702,9 +1694,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
+      propertyPath: MovingButton
+      value: 
+      objectReference: {fileID: 1083138321}
+    - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
       propertyPath: normalCamera
       value: 
       objectReference: {fileID: 1911885037}
+    - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
+      propertyPath: ShootingButton
+      value: 
+      objectReference: {fileID: 1084422470}
     - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
       propertyPath: groundDistance
@@ -1715,7 +1717,8 @@ PrefabInstance:
       propertyPath: groundMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2039182328270033533, guid: 70152b2f58c0ef14eb1e962964379605, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70152b2f58c0ef14eb1e962964379605, type: 3}
 --- !u!4 &2039182329554627541 stripped
 Transform:

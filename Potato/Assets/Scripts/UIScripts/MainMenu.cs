@@ -7,11 +7,10 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        if (PlayerPrefs.GetString("DifficultyText").Equals(default))
+        if (PlayerPrefs.GetString("DifficultyText").Equals(""))
         {
-            PlayerPrefs.SetString("DifficultyText", "Easy");
-            PlayerPrefs.SetInt("MaxEnemyCount", 3);
-            PlayerPrefs.SetInt("MaxTargetCount", 2);
+            ModerateDifficulty();
+            PlayerPrefs.SetString("ViewingMode", "Normal");
         }
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
@@ -25,6 +24,12 @@ public class MainMenu : MonoBehaviour
 
     public void SettingsMenu()
     {
+        if (PlayerPrefs.GetString("DifficultyText").Equals(""))
+        {
+            ModerateDifficulty();
+            PlayerPrefs.SetString("ViewingMode", "Normal");
+        }
+
         SceneManager.LoadScene("SettingsScene");
         PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
     }
@@ -71,6 +76,10 @@ public class MainMenu : MonoBehaviour
 
     public void CanShoot()
     {
+        //if (PlayerPrefs.GetInt("Paused") != 0)
+        //{
+        //    PlayerPrefs.SetString("Shooting", "Yes");
+        //}
         PlayerPrefs.SetString("Shooting", "Yes");
     }
 
