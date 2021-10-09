@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 12f;
+    public float sensitivity;
 
     private PlayerInput playerInput;
 
@@ -74,19 +75,20 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerPrefs.GetInt("Paused") == 0) {
             KeyControls();
 
-            float xMovement = -Input.gyro.rotationRateUnbiased.x;
-            float yMovement = -Input.gyro.rotationRateUnbiased.y;
-            transform.Rotate(xMovement, yMovement, 0f);
+            float xMovement = -Input.gyro.rotationRate.x * sensitivity * Time.deltaTime;
+            float yMovement = -Input.gyro.rotationRate.y * sensitivity * Time.deltaTime;
+
+            transform.Rotate(xMovement, 0f, 0f);
+            transform.Rotate(0f, yMovement, 0f);
 
             Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
             Vector3 moving = new Vector3(input.x, 0, input.y);
+            controller.Move(moving * speed * Time.deltaTime);
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
             Vector3 move = transform.right * x + transform.forward * z;
-
-            controller.Move(moving * speed * Time.deltaTime);
             controller.Move(move * speed * Time.deltaTime);
         }
     }

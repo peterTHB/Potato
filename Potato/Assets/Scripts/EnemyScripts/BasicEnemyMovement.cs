@@ -64,6 +64,7 @@ public class BasicEnemyMovement : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetInt("CurrentEnemies", PlayerPrefs.GetInt("CurrentEnemies") - 1);
             Destroy(this.gameObject);
         }
     }

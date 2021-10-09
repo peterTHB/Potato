@@ -587,6 +587,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bow
       objectReference: {fileID: 0}
+    - target: {fileID: 3993296114316371790, guid: 76fb05ebe40f04a9d9092578140400e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4299354868345540255, guid: 76fb05ebe40f04a9d9092578140400e7,
         type: 3}
       propertyPath: parent
@@ -600,17 +605,17 @@ PrefabInstance:
     - target: {fileID: 4332701452774817268, guid: 76fb05ebe40f04a9d9092578140400e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.284
+      value: 0.291
       objectReference: {fileID: 0}
     - target: {fileID: 4332701452774817268, guid: 76fb05ebe40f04a9d9092578140400e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.276
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4332701452774817268, guid: 76fb05ebe40f04a9d9092578140400e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.99
+      value: 1.745
       objectReference: {fileID: 0}
     - target: {fileID: 4332701452774817268, guid: 76fb05ebe40f04a9d9092578140400e7,
         type: 3}
@@ -1597,6 +1602,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1192829754838676856, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001314550931828674, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2039182328270033521, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
       propertyPath: m_IsActive
@@ -1694,6 +1709,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
         type: 3}
+      propertyPath: sensitivity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2039182328547752863, guid: 70152b2f58c0ef14eb1e962964379605,
+        type: 3}
       propertyPath: MovingButton
       value: 
       objectReference: {fileID: 1083138321}
@@ -1719,6 +1739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2039182328270033533, guid: 70152b2f58c0ef14eb1e962964379605, type: 3}
+    - {fileID: 2039182328547752856, guid: 70152b2f58c0ef14eb1e962964379605, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70152b2f58c0ef14eb1e962964379605, type: 3}
 --- !u!4 &2039182329554627541 stripped
 Transform:
