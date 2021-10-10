@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.lockState = CursorLockMode.None;
         PlayerPrefs.SetInt("Paused", 0);
         PlayerPrefs.SetFloat("PlayerScore", 0);

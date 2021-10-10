@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyMaker : MonoBehaviour
 {
-    //private int maxEnemies = 0;
-    //private int currEnemies = 0;
     public GameObject[] enemys;
     private GameObject rotateAround;
 
@@ -20,8 +18,6 @@ public class EnemyMaker : MonoBehaviour
         PlayerPrefs.SetInt("InitialEnemyCount", 3);
         PlayerPrefs.SetInt("CurrentEnemies", 0);
         rotateAround = GameObject.Find("Player");
-        //SpawnAllEnemies();
-        SpawnEnemy();
         StartCoroutine(SpawnEnemyIEnum());
     }
 
@@ -45,11 +41,6 @@ public class EnemyMaker : MonoBehaviour
             PlayerPrefs.SetInt("CurrentEnemies", 0);
 
             PlayerPrefs.SetInt("MaxEnemyCount", PlayerPrefs.GetInt("LevelCount") * PlayerPrefs.GetInt("MaxEnemyCount"));
-
-            //for (int j = 0; j < PlayerPrefs.GetInt("LevelCount"); j++)
-            //{
-            //    SpawnAllEnemies();
-            //}
         }
 
         if (PlayerPrefs.GetInt("CurrentEnemies") < PlayerPrefs.GetInt("MaxEnemyCount"))
@@ -62,14 +53,6 @@ public class EnemyMaker : MonoBehaviour
         }
 
         rotateAround = GameObject.Find("Player");
-    }
-
-    private void SpawnAllEnemies()
-    {
-        for (int i = 0; i < PlayerPrefs.GetInt("MaxEnemyCount"); i++)
-        {
-            SpawnEnemy();
-        }
     }
 
     private IEnumerator SpawnEnemyIEnum()
@@ -91,21 +74,5 @@ public class EnemyMaker : MonoBehaviour
             int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") + 1;
             PlayerPrefs.SetInt("CurrentEnemies", currEnemies);
         }
-    }
-
-    private void SpawnEnemy()
-    {
-        float randomX = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
-        float randomY = Random.Range(0, 5f);
-        float randomZ = acceptedPositions[Random.Range(0, acceptedPositions.Length)];
-
-        Vector3 position = new Vector3(randomX + rotateAround.transform.position.x, randomY,
-            randomZ + rotateAround.transform.position.z);
-
-        GameObject currEnemy = enemys[Random.Range(0, enemys.Length)];
-
-        Instantiate(currEnemy, position, Quaternion.identity);
-        int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") + 1;
-        PlayerPrefs.SetInt("CurrentEnemies", currEnemies);
     }
 }

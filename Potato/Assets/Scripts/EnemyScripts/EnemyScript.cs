@@ -11,10 +11,6 @@ public class EnemyScript : MonoBehaviour
 
     public void GotHit()
     {
-        // Set Current entities by -1
-        // If current entities are 0, increase max entities
-        // destroy gameobject and parent
-
         if (transform.parent.parent.gameObject.TryGetComponent<ShielderEnemyMovement>(out ShielderEnemyMovement shielderEnemy))
         {
             shielderEnemy.StopShielding();
