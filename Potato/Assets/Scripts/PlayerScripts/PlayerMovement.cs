@@ -75,14 +75,22 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerPrefs.GetInt("Paused") == 0) {
             KeyControls();
 
-            float xMovement = -Input.gyro.rotationRate.x * sensitivity * Time.deltaTime;
-            float yMovement = -Input.gyro.rotationRate.y * sensitivity * Time.deltaTime;
+            float xMovement = -Input.gyro.rotationRateUnbiased.x * sensitivity * Time.deltaTime;
+            float yMovement = -Input.gyro.rotationRateUnbiased.y * sensitivity * Time.deltaTime;
 
-            transform.Rotate(xMovement, 0f, 0f);
+            if (PlayerPrefs.GetString("ViewingMode").Equals("Normal"))
+            {
+                normalCamera.transform.Rotate(xMovement, 0f, 0f);
+            }
+            else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
+            {
+                ARCamera.transform.Rotate(xMovement, 0f, 0f);
+            }
+
             transform.Rotate(0f, yMovement, 0f);
 
             Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
-            Vector3 moving = new Vector3(input.x, 0, input.y);
+            Vector3 moving = transform.right * input.x + transform.forward * input.y;
             controller.Move(moving * speed * Time.deltaTime);
 
             float x = Input.GetAxis("Horizontal");

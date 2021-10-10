@@ -20,7 +20,8 @@ public class EnemyMaker : MonoBehaviour
         PlayerPrefs.SetInt("InitialEnemyCount", 3);
         PlayerPrefs.SetInt("CurrentEnemies", 0);
         rotateAround = GameObject.Find("Player");
-        SpawnAllEnemies();
+        //SpawnAllEnemies();
+        SpawnEnemy();
         StartCoroutine(SpawnEnemyIEnum());
     }
 
