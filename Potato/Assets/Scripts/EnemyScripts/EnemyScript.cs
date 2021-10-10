@@ -15,6 +15,6 @@ public class EnemyScript : MonoBehaviour
         {
             shielderEnemy.StopShielding();
         }
-        Destroy(enemyParent);
+        Destroy(transform.parent.parent.gameObject);
     }
 }
