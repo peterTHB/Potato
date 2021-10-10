@@ -4,18 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - HealthSpawn
+  - PauseMenu
+  - Heart
+  - Arrow
+  - TargetParent
+  - Target
+  - EnemyParent
+  - Enemy
+  - EnemyBullet
+  - Shield
   - Ground
   - Boundary
-  - Target
-  - Enemy
-  - HealthSpawn
-  - Heart
-  - PauseMenu
-  - TargetParent
-  - EnemyParent
-  - Shield
-  - EnemyBullet
-  - Arrow
+  - ARCamera
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
+  - 
   - 
   - 
   - 

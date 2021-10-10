@@ -1,46 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private static float sensitivity = 1000f;
     public CharacterController controller;
-    public float gravity = -9.18f;
     public float speed = 12f;
-    public float jumpHeight = 3f;
+    public float sensitivity;
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-
-    Vector3 velocity;
-    bool isGrounded;
-    bool canMove;
+    private PlayerInput playerInput;
 
     private GameObject pauseMenu;
+
+    public GameObject normalCamera;
+    public GameObject ARCamera;
+    public GameObject ShootingButton;
+    public GameObject MovingButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         PlayerPrefs.SetInt("Paused", 0);
+        PlayerPrefs.SetFloat("PlayerScore", 0);
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        pauseMenu.SetActive(false);
         PlayerPrefs.SetInt("MaxTargets", 3);
         PlayerPrefs.SetInt("LevelCount", 0);
+        playerInput = GetComponent<PlayerInput>();
+        PlayerPrefs.SetInt("PlayerTargetsHit", 0);
+        Input.gyro.enabled = true;
+
+        if (PlayerPrefs.GetString("ViewingMode").Equals("Normal"))
+        {
+            ARCamera.SetActive(false);
+        }
+        else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
+        {
+            normalCamera.SetActive(false);
+        } 
+        else if (PlayerPrefs.GetString("ViewingMode").Equals(""))
+        {
+            ARCamera.SetActive(false);
+            PlayerPrefs.SetString("ViewingMode", "Normal");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        //if (isGrounded && velocity.y < 0)
-        //{
-        //    velocity.y = -2f;
-        //}
+        if (PlayerPrefs.GetInt("Paused") == 0)
+        {
+            pauseMenu.SetActive(false);
+            ShootingButton.SetActive(true);
+            MovingButton.SetActive(true);
+        }
+        else if (PlayerPrefs.GetInt("Paused") == 1)
+        {
+            pauseMenu.SetActive(true);
+            ShootingButton.SetActive(false);
+            MovingButton.SetActive(false);
+        }
 
         // Check if player has died or not
         if (PlayerPrefs.GetInt("PlayerHealth") == 0)
@@ -50,29 +71,33 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene("FinishedScene");
         }
 
-        KeyControls();
+        if (PlayerPrefs.GetInt("Paused") == 0) {
+            KeyControls();
 
-        float xInput = Input.GetAxis("Mouse X");
+            float xMovement = -Input.gyro.rotationRateUnbiased.x * sensitivity * Time.deltaTime;
+            float yMovement = -Input.gyro.rotationRateUnbiased.y * sensitivity * Time.deltaTime;
 
-        xInput *= sensitivity * Time.deltaTime;
+            if (PlayerPrefs.GetString("ViewingMode").Equals("Normal"))
+            {
+                normalCamera.transform.Rotate(xMovement, 0f, 0f);
+            }
+            else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
+            {
+                ARCamera.transform.Rotate(xMovement, 0f, 0f);
+            }
 
-        transform.Rotate(0f, xInput, 0f);
+            transform.Rotate(0f, yMovement, 0f);
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+            Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
+            Vector3 moving = transform.right * input.x + transform.forward * input.y;
+            controller.Move(moving * speed * Time.deltaTime);
 
-        Vector3 move = transform.right * x + transform.forward * z;
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-        controller.Move(move * speed * Time.deltaTime);
-
-        //if (Input.GetButtonDown("Jump") && isGrounded)
-        //{
-        //    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        //}
-
-        //velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
+            Vector3 move = transform.right * x + transform.forward * z;
+            controller.Move(move * speed * Time.deltaTime);
+        }
     }
 
     private void KeyControls()
@@ -84,14 +109,12 @@ public class PlayerMovement : MonoBehaviour
                 Time.timeScale = 1f;
                 pauseMenu.SetActive(false);
                 PlayerPrefs.SetInt("Paused", 0);
-                Cursor.lockState = CursorLockMode.Locked;
             }
             else if (PlayerPrefs.GetInt("Paused") == 0)
             {
                 Time.timeScale = 0f;
                 pauseMenu.SetActive(true);
                 PlayerPrefs.SetInt("Paused", 1);
-                Cursor.lockState = CursorLockMode.None;
             }
         }
 
