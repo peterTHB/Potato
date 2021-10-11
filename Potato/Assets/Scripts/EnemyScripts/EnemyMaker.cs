@@ -15,7 +15,6 @@ public class EnemyMaker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("InitialEnemyCount", 3);
         PlayerPrefs.SetInt("CurrentEnemies", 0);
         rotateAround = GameObject.Find("Player");
         StartCoroutine(SpawnEnemyIEnum());
@@ -68,7 +67,8 @@ public class EnemyMaker : MonoBehaviour
             Vector3 position = new Vector3(randomX + rotateAround.transform.position.x, randomY,
                 randomZ + rotateAround.transform.position.z);
 
-            GameObject currEnemy = enemys[Random.Range(0, enemys.Length)];
+            // Change back to enemys.Length
+            GameObject currEnemy = enemys[Random.Range(0, 2)];
 
             Instantiate(currEnemy, position, Quaternion.identity);
             int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") + 1;
