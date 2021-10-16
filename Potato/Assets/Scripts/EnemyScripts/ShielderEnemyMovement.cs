@@ -139,7 +139,10 @@ public class ShielderEnemyMovement : MonoBehaviour
 
     public void StopShielding()
     {
-        currTargetProtecting.GetComponent<TargetScript>().isBlocked = false;
-        currTargetProtecting = null;
+        if (currTargetProtecting != null)
+        {
+            currTargetProtecting.GetComponent<TargetScript>().isBlocked = false;
+            currTargetProtecting = null;
+        }
     }
 }

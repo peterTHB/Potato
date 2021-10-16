@@ -68,7 +68,7 @@ public class EnemyMaker : MonoBehaviour
                 randomZ + rotateAround.transform.position.z);
 
             // Change back to enemys.Length
-            GameObject currEnemy = enemys[Random.Range(0, 2)];
+            GameObject currEnemy = enemys[Random.Range(0, enemys.Length)];
 
             Instantiate(currEnemy, position, Quaternion.identity);
             int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") + 1;

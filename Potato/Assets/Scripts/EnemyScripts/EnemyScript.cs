@@ -11,10 +11,25 @@ public class EnemyScript : MonoBehaviour
 
     public void GotHit()
     {
-        if (transform.parent.parent.gameObject.TryGetComponent<ShielderEnemyMovement>(out ShielderEnemyMovement shielderEnemy))
+        GameObject enemyParent = this.gameObject;
+
+        GameObject currParentObject = this.gameObject;
+        while(enemyParent.tag != "EnemyParent" && currParentObject != null)
+        {
+            if (currParentObject.tag == "EnemyParent")
+            {
+                enemyParent = currParentObject;
+            }
+            else
+            {
+                currParentObject = currParentObject.transform.parent.gameObject;
+            }
+        }
+
+        if (enemyParent.TryGetComponent<ShielderEnemyMovement>(out ShielderEnemyMovement shielderEnemy))
         {
             shielderEnemy.StopShielding();
         }
-        Destroy(transform.parent.parent.gameObject);
+        Destroy(enemyParent);
     }
 }
