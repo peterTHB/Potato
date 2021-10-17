@@ -5,10 +5,15 @@ using UnityEngine;
 public class ShieldBlock : MonoBehaviour
 {
     public Material material;
+    public GameObject ricochetParticles;
+    private AudioSource audioSource;
+    private AudioClip[] ricochetSoundEffects;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponentInParent<AudioSource>();
+        ricochetSoundEffects = Resources.LoadAll<AudioClip>("RicochetSound");
     }
 
     // Update is called once per frame
@@ -21,8 +26,21 @@ public class ShieldBlock : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Arrow"))
         {
-            //Destroy(collision.gameObject);
-            material.SetColor("_Color", Color.red * 0.5f);
+            audioSource.PlayOneShot(ricochetSoundEffects[Random.Range(0, ricochetSoundEffects.Length)]);
+            GameObject tempParticle = Instantiate<GameObject>(ricochetParticles);
+            tempParticle.transform.position = collision.transform.position;
+
+            Destroy(collision.gameObject);
+            StartCoroutine(ColorChange());
         }
+    }
+
+    private IEnumerator ColorChange()
+    {
+        material.SetColor("_Color", Color.red * 0.5f);
+
+        yield return new WaitForSeconds(1.5f);
+
+        material.SetColor("_Color", Color.blue * 0.5f);
     }
 }

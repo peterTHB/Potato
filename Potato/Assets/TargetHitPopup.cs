@@ -26,6 +26,7 @@ public class TargetHitPopup : MonoBehaviour
     void Update()
     {
         transform.LookAt(cameraTransform);
+        transform.Rotate(new Vector3(0,180,0));
         transform.Translate(0,Time.deltaTime * 0.3f,0);
         randomPopupImage.CrossFadeAlpha(0, duration, false);
     }
