@@ -5,6 +5,7 @@ using UnityEngine;
 public class TargetScript : MonoBehaviour
 {
     public bool isBlocked = false;
+    public GameObject spawnOnHit;
 
     private void Start()
     {
@@ -37,6 +38,9 @@ public class TargetScript : MonoBehaviour
 
     public void GotHit()
     {
+        GameObject temp = Instantiate<GameObject>(spawnOnHit);
+        temp.transform.position = this.transform.position;
+
         int totalTargetsHit = PlayerPrefs.GetInt("PlayerTargetsHit") + 1;
         PlayerPrefs.SetInt("PlayerTargetsHit", totalTargetsHit);
         Destroy(transform.parent.gameObject);

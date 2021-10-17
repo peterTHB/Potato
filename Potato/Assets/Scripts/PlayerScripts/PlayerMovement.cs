@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         PlayerPrefs.SetInt("Paused", 0);
         PlayerPrefs.SetFloat("PlayerScore", 0);
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
@@ -79,33 +79,33 @@ public class PlayerMovement : MonoBehaviour
             float yMovement = -Input.gyro.rotationRateUnbiased.y * sensitivity * Time.deltaTime;
 
             // Mouse
-            //float mouseX = Input.GetAxis("Mouse X");
-            //float mouseY = Input.GetAxis("Mouse Y");
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
 
             if (PlayerPrefs.GetString("ViewingMode").Equals("Normal"))
             {
                 normalCamera.transform.Rotate(xMovement, 0f, 0f);
-                //normalCamera.transform.Rotate(-mouseY, 0f, 0f);
+                normalCamera.transform.Rotate(-mouseY, 0f, 0f);
             }
             else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
             {
                 ARCamera.transform.Rotate(xMovement, 0f, 0f);
-                //ARCamera.transform.Rotate(-mouseY, 0f, 0f);
+                ARCamera.transform.Rotate(-mouseY, 0f, 0f);
             }
 
             transform.Rotate(0f, yMovement, 0f);
-            //transform.Rotate(0f, mouseX, 0f);
+            transform.Rotate(0f, mouseX, 0f);
 
             Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
             Vector3 moving = transform.right * input.x + transform.forward * input.y;
             controller.Move(moving * speed * Time.deltaTime);
 
             // Keyboard
-            //float x = Input.GetAxis("Horizontal");
-            //float z = Input.GetAxis("Vertical");
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-            //Vector3 move = transform.right * x + transform.forward * z;
-            //controller.Move(move * speed * Time.deltaTime);
+            Vector3 move = transform.right * x + transform.forward * z;
+            controller.Move(move * speed * Time.deltaTime);
         }
     }
 
@@ -172,10 +172,10 @@ public class PlayerMovement : MonoBehaviour
             PlayerPrefs.SetInt("CurrentTargets", currTargets);
         }
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    PlayerPrefs.SetString("Shooting", "Yes");
-        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+          PlayerPrefs.SetString("Shooting", "Yes");
+        }
     }
 
 }

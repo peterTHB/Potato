@@ -10,6 +10,7 @@ public class EnemyBulletScript : MonoBehaviour
     public float fluctuateDuration = 1f;
     private float lastFluctuate;
     public float moveSpeed = 1.5f;
+    public GameObject explosionEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,11 @@ public class EnemyBulletScript : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
+
+        GameObject tempExplosion = Instantiate<GameObject>(explosionEffect);
+        tempExplosion.transform.position = this.transform.position;
+        tempExplosion.transform.position.Scale(new Vector3(0.1f, 0.1f, 0.1f));
+        tempExplosion.GetComponent<ParticleSystem>().Play();
         //TODO arrow trigger
     }
 }

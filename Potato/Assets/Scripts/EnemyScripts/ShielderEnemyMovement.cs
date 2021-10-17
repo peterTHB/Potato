@@ -24,6 +24,7 @@ public class ShielderEnemyMovement : MonoBehaviour
     public float shieldDelay = 4f;
     private float lastTimeShielded;
     private float adjustedActionDelay;
+    private int randomDirection;
 
 
     // Start is called before the first frame update
@@ -55,6 +56,7 @@ public class ShielderEnemyMovement : MonoBehaviour
 
             if (lastChangeDirection + adjustedActionDelay <= Time.time)
             {
+                randomDirection = Random.Range(0, 2) == 0 ? -1 : 1;
                 //make sure new action is not same as old
                 ACTION newAction;
                 do
@@ -108,11 +110,11 @@ public class ShielderEnemyMovement : MonoBehaviour
         {
             case ACTION.MOVEDOWN:
                 transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
-                transform.RotateAround(player.transform.position, new Vector3(0, 1, 0), rotateAroundSpeed * Time.deltaTime);
+                transform.RotateAround(player.transform.position, new Vector3(0, randomDirection, 0), rotateAroundSpeed * Time.deltaTime);
                 break;
             case ACTION.MOVEUP:
                 transform.Translate(0, moveSpeed * Time.deltaTime, 0);
-                transform.RotateAround(player.transform.position, new Vector3(0, 1, 0), rotateAroundSpeed * Time.deltaTime);
+                transform.RotateAround(player.transform.position, new Vector3(0, randomDirection, 0), rotateAroundSpeed * Time.deltaTime);
                 break;
             case ACTION.SHIELD:
                 ShieldTarget();

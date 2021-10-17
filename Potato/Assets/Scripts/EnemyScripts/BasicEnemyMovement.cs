@@ -21,6 +21,7 @@ public class BasicEnemyMovement : MonoBehaviour
     public float shotDelay = 4f;
     private float lastTimeShot;
     private float adjustedActionDelay;
+    private int randomDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class BasicEnemyMovement : MonoBehaviour
 
             if (lastChangeDirection + adjustedActionDelay <= Time.time)
             {
+                randomDirection = Random.Range(0, 2) == 0 ? -1 : 1;
                 //make sure new action is not same as old
                 ACTION newAction;
                 do
@@ -75,11 +77,11 @@ public class BasicEnemyMovement : MonoBehaviour
         {
             case ACTION.MOVEDOWN:
                 transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
-                transform.RotateAround(pivotObject.transform.position, new Vector3(0, 1, 0), rotateAroundSpeed * Time.deltaTime);
+                transform.RotateAround(pivotObject.transform.position, new Vector3(0, randomDirection, 0), rotateAroundSpeed * Time.deltaTime);
                 break;
             case ACTION.MOVEUP:
                 transform.Translate(0,moveSpeed * Time.deltaTime,0);
-                transform.RotateAround(pivotObject.transform.position, new Vector3(0, 1, 0), rotateAroundSpeed * Time.deltaTime);
+                transform.RotateAround(pivotObject.transform.position, new Vector3(0, randomDirection, 0), rotateAroundSpeed * Time.deltaTime);
                 break;
             case ACTION.FIRE:
                 ShootAtPlayer();

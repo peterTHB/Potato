@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    public GameObject explosionEffect;
+
     private void Start()
     {
 
@@ -30,6 +32,11 @@ public class EnemyScript : MonoBehaviour
         {
             shielderEnemy.StopShielding();
         }
+        GameObject tempExplosion = Instantiate<GameObject>(explosionEffect);
+        tempExplosion.transform.position = this.transform.position;
+        tempExplosion.transform.position.Scale(new Vector3(0.1f, 0.1f, 0.1f));
+        tempExplosion.GetComponent<ParticleSystem>().Play();
+
         Destroy(enemyParent);
     }
 }
