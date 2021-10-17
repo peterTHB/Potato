@@ -17,6 +17,8 @@ TagManager:
   - Ground
   - Boundary
   - ARCamera
+  - MenuMusic
+  - FireButton
   layers:
   - Default
   - TransparentFX

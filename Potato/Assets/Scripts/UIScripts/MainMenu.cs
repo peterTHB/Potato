@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<PlayMusic>().StopMusic();
+
         if (PlayerPrefs.GetString("DifficultyText").Equals(""))
         {
             ModerateDifficulty();
@@ -18,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void HowToPlay()
     {
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<PlayMusic>().PlayingMusic();
         SceneManager.LoadScene("HowToPlayScene");
         PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
     }
@@ -30,12 +33,15 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetString("ViewingMode", "Normal");
         }
 
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<PlayMusic>().PlayingMusic();
+
         SceneManager.LoadScene("SettingsScene");
         PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
     }
 
     public void LoadMenu()
     {
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<PlayMusic>().PlayingMusic();
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("Menu");
     }
@@ -79,6 +85,7 @@ public class MainMenu : MonoBehaviour
         //{
         //    PlayerPrefs.SetString("Shooting", "Yes");
         //}
+        GameObject.FindGameObjectWithTag("FireButton").GetComponent<AudioSource>().Play();
         PlayerPrefs.SetString("Shooting", "Yes");
     }
 
