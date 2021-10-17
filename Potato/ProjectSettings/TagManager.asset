@@ -19,6 +19,7 @@ TagManager:
   - ARCamera
   - MenuMusic
   - FireButton
+  - MoveableButton
   layers:
   - Default
   - TransparentFX

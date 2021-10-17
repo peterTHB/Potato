@@ -62,29 +62,37 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetString("DifficultyText", "Easy");
         PlayerPrefs.SetInt("MaxEnemyCount", 3);
-        PlayerPrefs.SetInt("MaxTargetCount", 2);
+        PlayerPrefs.SetInt("MaxTargetCount", 1);
+        PlayerPrefs.SetFloat("RotateAroundSpeed", 20f);
+        PlayerPrefs.SetFloat("MoveSpeed", 3f);
+        PlayerPrefs.SetFloat("RotationSpeed", 40f);
+        PlayerPrefs.SetFloat("DrillMoveSpeed", 2f);
     }
 
     public void ModerateDifficulty()
     {
         PlayerPrefs.SetString("DifficultyText", "Moderate");
         PlayerPrefs.SetInt("MaxEnemyCount", 5);
-        PlayerPrefs.SetInt("MaxTargetCount", 3);
+        PlayerPrefs.SetInt("MaxTargetCount", 2);
+        PlayerPrefs.SetFloat("RotateAroundSpeed", 30f);
+        PlayerPrefs.SetFloat("MoveSpeed", 4f);
+        PlayerPrefs.SetFloat("RotationSpeed", 50f);
+        PlayerPrefs.SetFloat("DrillMoveSpeed", 3f);
     }
 
     public void HardDifficulty()
     {
         PlayerPrefs.SetString("DifficultyText", "Hard");
         PlayerPrefs.SetInt("MaxEnemyCount", 7);
-        PlayerPrefs.SetInt("MaxTargetCount", 4);
+        PlayerPrefs.SetInt("MaxTargetCount", 3);
+        PlayerPrefs.SetFloat("RotateAroundSpeed", 40f);
+        PlayerPrefs.SetFloat("MoveSpeed", 5f);
+        PlayerPrefs.SetFloat("RotationSpeed", 60f);
+        PlayerPrefs.SetFloat("DrillMoveSpeed", 4f);
     }
 
     public void CanShoot()
     {
-        //if (PlayerPrefs.GetInt("Paused") != 0)
-        //{
-        //    PlayerPrefs.SetString("Shooting", "Yes");
-        //}
         GameObject.FindGameObjectWithTag("FireButton").GetComponent<AudioSource>().Play();
         PlayerPrefs.SetString("Shooting", "Yes");
     }
@@ -95,13 +103,11 @@ public class MainMenu : MonoBehaviour
         {
             Time.timeScale = 1f;
             PlayerPrefs.SetInt("Paused", 0);
-            //Cursor.lockState = CursorLockMode.Locked;
         }
         else if (PlayerPrefs.GetInt("Paused") == 0)
         {
             Time.timeScale = 0f;
             PlayerPrefs.SetInt("Paused", 1);
-            //Cursor.lockState = CursorLockMode.None;
         }
     }
 

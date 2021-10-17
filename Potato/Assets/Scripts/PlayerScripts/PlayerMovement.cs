@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject ARCamera;
     public GameObject ShootingButton;
     public GameObject MovingButton;
+    public GameObject Platform;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("Paused", 0);
         PlayerPrefs.SetFloat("PlayerScore", 0);
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        PlayerPrefs.SetInt("MaxTargets", 3);
         PlayerPrefs.SetInt("LevelCount", 0);
         playerInput = GetComponent<PlayerInput>();
         PlayerPrefs.SetInt("PlayerTargetsHit", 0);
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
         {
             normalCamera.SetActive(false);
+            Platform.SetActive(false);
         } 
         else if (PlayerPrefs.GetString("ViewingMode").Equals(""))
         {
@@ -79,33 +80,33 @@ public class PlayerMovement : MonoBehaviour
             float yMovement = -Input.gyro.rotationRateUnbiased.y * sensitivity * Time.deltaTime;
 
             // Mouse
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
+            //float mouseX = Input.GetAxis("Mouse X");
+            //float mouseY = Input.GetAxis("Mouse Y");
 
             if (PlayerPrefs.GetString("ViewingMode").Equals("Normal"))
             {
                 normalCamera.transform.Rotate(xMovement, 0f, 0f);
-                normalCamera.transform.Rotate(-mouseY, 0f, 0f);
+                //normalCamera.transform.Rotate(-mouseY, 0f, 0f);
             }
             else if (PlayerPrefs.GetString("ViewingMode").Equals("AR"))
             {
                 ARCamera.transform.Rotate(xMovement, 0f, 0f);
-                ARCamera.transform.Rotate(-mouseY, 0f, 0f);
+                //ARCamera.transform.Rotate(-mouseY, 0f, 0f);
             }
 
             transform.Rotate(0f, yMovement, 0f);
-            transform.Rotate(0f, mouseX, 0f);
+            //transform.Rotate(0f, mouseX, 0f);
 
             Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
             Vector3 moving = transform.right * input.x + transform.forward * input.y;
             controller.Move(moving * speed * Time.deltaTime);
 
             // Keyboard
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
+            //float x = Input.GetAxis("Horizontal");
+            //float z = Input.GetAxis("Vertical");
 
-            Vector3 move = transform.right * x + transform.forward * z;
-            controller.Move(move * speed * Time.deltaTime);
+            //Vector3 move = transform.right * x + transform.forward * z;
+            //controller.Move(move * speed * Time.deltaTime);
         }
     }
 
@@ -129,53 +130,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            int currHealth = PlayerPrefs.GetInt("PlayerHealth") + 1;
-            PlayerPrefs.SetInt("PlayerHealth", currHealth);
-            PlayerPrefs.SetString("MakeHearts", "YES");
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            int currHealth = PlayerPrefs.GetInt("PlayerHealth") - 1;
-            PlayerPrefs.SetInt("PlayerHealth", currHealth);
-            PlayerPrefs.SetString("MakeHearts", "YES");
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            if (PlayerPrefs.GetInt("CurrentEnemies") > 0)
-            {
-                int currEnemies = PlayerPrefs.GetInt("CurrentEnemies") - 1;
-                GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
-                GameObject[] enemyParentObjects = GameObject.FindGameObjectsWithTag("EnemyParent");
-                GameObject.Destroy(enemyObjects[currEnemies]);
-                GameObject.Destroy(enemyParentObjects[currEnemies]);
-
-                PlayerPrefs.SetInt("CurrentEnemies", currEnemies);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            int currTargets = PlayerPrefs.GetInt("CurrentTargets") - 1;
-            GameObject[] targetObjects = GameObject.FindGameObjectsWithTag("Target");
-            GameObject[] targetParentObjects = GameObject.FindGameObjectsWithTag("TargetParent");
-            GameObject.Destroy(targetObjects[currTargets]);
-            GameObject.Destroy(targetParentObjects[currTargets]);
-
-            if (currTargets == 0)
-            {
-                int currMaxTargets = PlayerPrefs.GetInt("MaxTargets");
-                PlayerPrefs.SetInt("MaxTargets", currMaxTargets + 3);
-            }
-
-            PlayerPrefs.SetInt("CurrentTargets", currTargets);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-          PlayerPrefs.SetString("Shooting", "Yes");
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //  PlayerPrefs.SetString("Shooting", "Yes");
+        //}
     }
 
 }

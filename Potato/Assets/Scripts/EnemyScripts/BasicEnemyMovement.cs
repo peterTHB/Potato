@@ -6,10 +6,10 @@ public class BasicEnemyMovement : MonoBehaviour
 {
     public enum ACTION { MOVEUP, MOVEDOWN, IDLE, FIRE }
 
-    public float rotateAroundSpeed = 30;
+    public float rotateAroundSpeed = 0f;
     public float yAxisRange = 20f;
-    private float moveSpeed = 4f;
-    private float rotationSpeed = 50;
+    private float moveSpeed = 0f;
+    private float rotationSpeed = 0f;
 
     public GameObject model;
     public GameObject bullet;
@@ -26,6 +26,9 @@ public class BasicEnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rotateAroundSpeed = PlayerPrefs.GetFloat("RotateAroundSpeed");
+        moveSpeed = PlayerPrefs.GetFloat("MoveSpeed");
+        rotationSpeed = PlayerPrefs.GetFloat("RotationSpeed");
         pivotObject = GameObject.Find("Player");
         adjustedActionDelay = baseActionChangeDelay;
     }

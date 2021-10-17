@@ -13,6 +13,7 @@ public class SpawnTargets : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(PlayerPrefs.GetInt("MaxTargetCount"));
         maxTargets = PlayerPrefs.GetInt("MaxTargetCount");
         PlayerPrefs.SetInt("CurrentTargets", 0);
         rotateAround = GameObject.Find("Player");

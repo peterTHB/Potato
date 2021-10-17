@@ -7,10 +7,10 @@ public class ShielderEnemyMovement : MonoBehaviour
 {
     public enum ACTION { MOVEUP, MOVEDOWN, IDLE, SHIELD }
 
-    public float rotateAroundSpeed = 30;
+    public float rotateAroundSpeed = 0f;
     public float yAxisRange = 20f;
-    private float moveSpeed = 4f;
-    private float rotationSpeed = 50;
+    private float moveSpeed = 0f;
+    private float rotationSpeed = 0f;
 
     private LightningBoltScript lightningBoltScript;
     public GameObject model;
@@ -30,6 +30,10 @@ public class ShielderEnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rotateAroundSpeed = PlayerPrefs.GetFloat("RotateAroundSpeed");
+        moveSpeed = PlayerPrefs.GetFloat("MoveSpeed");
+        rotationSpeed = PlayerPrefs.GetFloat("RotationSpeed");
+
         player = GameObject.Find("Player");
         adjustedActionDelay = baseActionChangeDelay;
 
