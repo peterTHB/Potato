@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    [Range(0.0f, 500.0f)]
-    public float arrowSpeed = 50.0f;
-
+    private float arrowSpeed;
+    public Bow bow;
+    
     public GameObject parent;
 
     private bool fired = false;
     private Rigidbody rb;
     private float startTime;
+    private float timer = 0.0f;
+    private float fullDrawTime = 5.0f;
+    private bool drawing = false;
+    private const float ARROW_SPEED_RAT = 3.0f;
 
     void Start()
     {
@@ -30,7 +34,6 @@ public class Arrow : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
     }
 
     public void Fire()
@@ -39,9 +42,20 @@ public class Arrow : MonoBehaviour
         fired = true;
         rb = GetComponent<Rigidbody>();
 
-        rb.useGravity = true;
+        //rb.useGravity = true;
+        float drawTime = Time.time - bow.GetTimer();
+        print(drawTime);
+        if (drawTime >= fullDrawTime)
+        {
+            drawTime = fullDrawTime;
+        }
+        arrowSpeed = drawTime * ARROW_SPEED_RAT;
+        print(arrowSpeed);
         rb.AddForce(transform.right * arrowSpeed);
         transform.parent = null;
+        arrowSpeed = 0.0f;
+        drawing = false;
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -61,6 +75,29 @@ public class Arrow : MonoBehaviour
             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>(), true);
         }
 
+
+    }
+
+  
+
+    public void StartDraw()
+    {
+        drawing = true;
+        print("Start draw");
+       
+        bow.SetTimer(Time.time);
+        
+
+    }
+
+    public void FinishDraw()
+    {
+        
+    }
+
+    public Vector3 GetForce()
+    {
+        return transform.right * ( Time.time - timer );
 
     }
 }

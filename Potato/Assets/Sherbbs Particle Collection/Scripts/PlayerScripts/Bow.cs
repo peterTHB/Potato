@@ -18,6 +18,9 @@ public class Bow : MonoBehaviour
     private Vector3 left_focus_pos = new Vector3(0.3f, 0.3f, 0.15f);
     private Vector3 focus_rot = new Vector3(0f, -90f, 90f);
 
+
+    private float timer = 0.0f;
+
     public GameObject arrow_obj;
 
 
@@ -54,5 +57,15 @@ public class Bow : MonoBehaviour
             arrow_obj.SetActive(true);
             cooldown = 2.0f;
         }
+    }
+
+    public void SetTimer( float timer )
+    {
+        this.timer = timer;
+    }
+
+    public float GetTimer()
+    {
+        return timer;
     }
 }
